@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage
+    SchemaVersion="1.0"
+    AutodeskProduct="3ds Max"
+    ProductType="Application"
+    Name="MaxRunway"
+    Description="V-Ray native reference capture, Runway cinematic generation, and fail-closed AI comparison."
+    AppVersion="0.2.0"
+    Author="MaxRunway"
+    ProductCode="{B63D4B22-0AD9-4641-8A94-08C2E2ECE702}"
+    UpgradeCode="{74C2293C-483A-464B-A0D1-B329CF179589}">
+  <CompanyDetails Name="MaxRunway" />
+  <Components Description="post-start-up scripts parts">
+    <RuntimeRequirements OS="Win64" Platform="3ds Max" SeriesMin="2026" SeriesMax="2026" />
+    <ComponentEntry AppName="MaxRunway" Version="0.2.0" ModuleName="./Contents/MaxRunway/launch.py" />
+  </Components>
+</ApplicationPackage>

@@ -1,0 +1,43 @@
+# Local dependencies and Python caches
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Credentials, local settings, and authentication caches
+.env
+.env.*
+!.env.example
+.mcp-auth/
+mcp-auth/
+auth.json
+settings.json
+*.pem
+*.key
+
+# Private scene/job data and generated media
+renders/
+jobs/
+job.json
+master/
+preview/
+guide/
+elements/
+runway/
+analysis/
+*.max
+*.max.bak
+*.exr
+*.vrimg
+*.mp4
+*.mov
+*.log
+
+# Release archives are uploaded as GitHub Release assets
+dist/
+build/
+*.zip
+*.zip.sha256
+.DS_Store
+Thumbs.db

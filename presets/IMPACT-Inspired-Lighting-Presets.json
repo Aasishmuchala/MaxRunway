@@ -1,0 +1,600 @@
+{
+  "schema_version": "1.0.0",
+  "title": "IMPACT-inspired architectural lighting recipes",
+  "created_on": "2026-09-14",
+  "status": "AUTHORED_RECIPES_NOT_EXECUTABLE_NOT_SCENE_VALIDATED",
+  "intended_host": {
+    "application": "3ds Max 2026",
+    "renderer": "V-Ray 7.2",
+    "exact_build": null,
+    "engine": null
+  },
+  "provenance": {
+    "scope": "Latest five uploads on the channel Videos tab as checked 2026-09-14; excludes Shorts and Live.",
+    "studio_presets_recovered": false,
+    "numeric_values": "Our authored starting suggestions, not settings measured or extracted from IMPACT 3D.",
+    "review_method": "Direct visual inspection of 335 detected-interval midpoint samples across five cached review videos; supplements an earlier 120 uniform samples. Not continuous playback or an audio review.",
+    "source_review_width_px": 1280,
+    "inspected_sample_width_px": 480,
+    "original_master_resolution_verified": false
+  },
+  "references": [
+    {
+      "id": "CM",
+      "video_id": "tO-Vl1hLa6U",
+      "title": "CENTURY MIRAI",
+      "upload_date": "2026-06-25",
+      "inspected_interval_samples": 100
+    },
+    {
+      "id": "RC",
+      "video_id": "dKymE__UK68",
+      "title": "RIVIERA CROWN",
+      "upload_date": "2026-04-30",
+      "inspected_interval_samples": 49
+    },
+    {
+      "id": "EN",
+      "video_id": "1KFbhDrLn-0",
+      "title": "ENCANTO LANSUM & MK",
+      "upload_date": "2026-04-24",
+      "inspected_interval_samples": 81
+    },
+    {
+      "id": "PM",
+      "video_id": "LZfvC9NAMjA",
+      "title": "DISCOVER THE SIXTH ELEMENT PAVANI MIRAI",
+      "upload_date": "2026-02-04",
+      "inspected_interval_samples": 83
+    },
+    {
+      "id": "PT",
+      "video_id": "Q3zCo73GNu0",
+      "title": "REDEFINING ARCHITECTURE... PRESIDENTIAL TOWERS",
+      "upload_date": "2025-12-24",
+      "inspected_interval_samples": 22
+    }
+  ],
+  "application_contract": {
+    "auto_apply": false,
+    "loader_implemented": false,
+    "render_now": false,
+    "target_workstation_access_established": false,
+    "require_scene_audit": true,
+    "require_versioned_baseline_snapshot": true,
+    "require_explicit_existing_light_bindings": true,
+    "missing_light_policy": "UNAVAILABLE_DO_NOT_CREATE",
+    "unsupported_parameter_policy": "BLOCK_DO_NOT_GUESS",
+    "require_parameter_diff_and_native_4k_pilot_approval": true,
+    "preserve": [
+      "geometry",
+      "textures",
+      "material_parameters_and_assignments",
+      "object_animation",
+      "camera_animation_and_switches",
+      "lens",
+      "camera_exposure_animation",
+      "depth_of_field",
+      "shutter_and_motion_blur",
+      "fps",
+      "frame_range",
+      "composition",
+      "working_colour_space",
+      "original_scene_file"
+    ],
+    "lighting_changes": "Only approved existing-light and environment controls in a versioned working copy. Appearance and reflections will change under relighting; shader parameters must not.",
+    "atmosphere": "Preserve existing state; add no fog, mist, weather or particles by default.",
+    "effects_and_audio": "Preserve approved effects only; no new flare, grain, sound or music from this catalogue.",
+    "sun_direction": "Approve world-space direction from actual site/camera/occluders; never attach it to the moving camera. Preserve existing light animation unless a replacement is explicitly approved.",
+    "shared_chapter_state": "Same approved world lighting for related shots; no automatic per-frame white balance or exposure.",
+    "lighting_basis": "Do not silently substitute Sun/Sky for HDRI or vice versa; avoid a duplicate sun in the HDRI plus analytic light.",
+    "null_semantics": "Unresolved or deliberately not prescribed; null is not zero, off, or permission to invent a value.",
+    "numeric_semantics": "Start values and ranges are calibration suggestions, not direct MAXScript property names or automatic commands.",
+    "contrast_metric": "Optional lit-to-shaded diffuse illumination ratio. Compare equivalent neutral diffuse surfaces or a supported irradiance diagnostic in scene-linear values. Not a VRayLight multiplier or display-code-value ratio; do not alter albedo to hit it.",
+    "practical_cct": "Kelvin suggestions apply only to mapped practical lights with a supported temperature mode; never to VRaySun or by relabelling an HDRI.",
+    "source_geometry_changes": "Sun direction, light size/position, environment orientation or shadow-pattern changes require a native rerender.",
+    "lightmix": "Only saved-pass intensity/colour/on-off exploration; verify complete contributors and renderer compatibility. Large changes require scene reconciliation and a rerender.",
+    "final_picture": "Every required frame is natively rendered at approved 4K dimensions, step 1, same source timebase. No Runway generation, AI upscale, optical flow or invented frames."
+  },
+  "unresolved_scene_values": {
+    "scene_path": null,
+    "camera_id": null,
+    "source_revision": null,
+    "world_north": null,
+    "world_sun_azimuth_degrees": null,
+    "light_bindings": null,
+    "existing_light_units_and_intensities": null,
+    "hdri_path_and_orientation": null,
+    "supported_sky_model": null,
+    "ocio_configuration": null,
+    "vfb_layer_state": null,
+    "baseline_snapshot": null,
+    "output_raster": null,
+    "fps": null,
+    "first_frame": null,
+    "last_frame": null
+  },
+  "presets": [
+    {
+      "id": "P00",
+      "name": "Original Scene",
+      "category": "baseline",
+      "references": [],
+      "purpose": "No relight; retain or restore the audited baseline.",
+      "settings": {
+        "action": "RESTORE_EXACT_CAPTURED_BASELINE",
+        "authored_overrides": []
+      },
+      "eligibility": "Requires captured baseline for restore; never reconstruct original settings from defaults.",
+      "grade_pair": "Original approved display/grade state."
+    },
+    {
+      "id": "P01",
+      "name": "Clear Neutral Daylight",
+      "category": "architectural",
+      "references": [
+        {
+          "ref": "PM",
+          "seconds": 35.717
+        },
+        {
+          "ref": "CM",
+          "seconds": 93.95
+        }
+      ],
+      "purpose": "Bright readable architecture, clean stone and natural water/planting colour.",
+      "settings": {
+        "sun_elevation_degrees": {
+          "start": 45,
+          "range": [
+            35,
+            55
+          ]
+        },
+        "vray_sun_size_multiplier": {
+          "start": 1.5,
+          "range": [
+            1,
+            2
+          ]
+        },
+        "sun_colour": "Physical sky-model response; no forced orange filter.",
+        "sky_fill": "Existing coherent daylight environment, calibrated to keep shade readable.",
+        "lit_to_shade_diffuse_ratio": {
+          "start": 3,
+          "range": [
+            2,
+            4
+          ]
+        },
+        "practical_cct_kelvin": null,
+        "intensity": "Start at existing scene values and units; calibrate after scene audit."
+      },
+      "eligibility": "Existing compatible daylight rig. Preserve existing sun position instead if site/time fidelity is locked.",
+      "grade_pair": "Neutral daylight; retain cream/white distinctions and restrain blue-green saturation.",
+      "reject_if": [
+        "white facade texture clips",
+        "foliage becomes neon",
+        "sun and reflection direction conflict"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "Dappled Garden Backlight",
+      "category": "architectural",
+      "references": [
+        {
+          "ref": "EN",
+          "seconds": 120
+        },
+        {
+          "ref": "PM",
+          "seconds": 50.717
+        },
+        {
+          "ref": "CM",
+          "seconds": 103.683
+        }
+      ],
+      "purpose": "Layered planting, rim-lit leaves and readable paths beneath existing canopy.",
+      "settings": {
+        "sun_elevation_degrees": {
+          "start": 25,
+          "range": [
+            15,
+            35
+          ]
+        },
+        "vray_sun_size_multiplier": {
+          "start": 2,
+          "range": [
+            1,
+            3
+          ]
+        },
+        "key_direction": "Side/back direction chosen once in world space for the actual hero view and existing occluders.",
+        "sky_fill": "Natural open-sky fill; keep shaded planting distinct.",
+        "lit_to_shade_diffuse_ratio": {
+          "start": 4,
+          "range": [
+            3,
+            5
+          ]
+        },
+        "practical_cct_kelvin": null,
+        "intensity": "Use actual calibrated daylight rig; no universal multiplier."
+      },
+      "eligibility": "Existing vegetation or architectural occluders can cast the required pattern. Otherwise mark unavailable.",
+      "grade_pair": "Neutral-to-warm daylight; differentiate greens without repainting foliage.",
+      "reject_if": [
+        "new foliage or shadow cards are required",
+        "leaf noise shimmers",
+        "shadow pattern changes between adjacent frames"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "Golden Low Sun",
+      "category": "architectural",
+      "references": [
+        {
+          "ref": "PT",
+          "seconds": 17.317
+        },
+        {
+          "ref": "EN",
+          "seconds": 13.133
+        },
+        {
+          "ref": "CM",
+          "seconds": 6.367
+        }
+      ],
+      "purpose": "Warm grazing light, long shadows and silhouette separation.",
+      "settings": {
+        "sun_elevation_degrees": {
+          "start": 7,
+          "range": [
+            4,
+            12
+          ]
+        },
+        "vray_sun_size_multiplier": {
+          "start": 2,
+          "range": [
+            1.5,
+            3
+          ]
+        },
+        "sun_colour": "Low-elevation response of the verified physical sky; do not assign Sun Kelvin.",
+        "sky_fill": "Restrained cooler environment with useful shadow detail.",
+        "lit_to_shade_diffuse_ratio": {
+          "start": 6,
+          "range": [
+            4,
+            8
+          ]
+        },
+        "practical_cct_kelvin": null,
+        "intensity": "Retain physical rig baseline, then calibrate existing sources for the approved exposure."
+      },
+      "eligibility": "Existing rig can produce low sun without contradicting a locked geographical/time requirement. Dawn versus dusk is not inferred from the image.",
+      "grade_pair": "Warm highlights, restrained olive greens and neutral recoverable stone.",
+      "reject_if": [
+        "warm grade changes every material to orange",
+        "glazing highlights clip",
+        "golden appearance is achieved only by global tint"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "Soft Window Interior",
+      "category": "architectural",
+      "references": [
+        {
+          "ref": "EN",
+          "seconds": 90.883
+        },
+        {
+          "ref": "PM",
+          "seconds": 77.867
+        },
+        {
+          "ref": "CM",
+          "seconds": 28.967
+        }
+      ],
+      "purpose": "Soft neutral daylight across pale walls, upholstery and stone.",
+      "settings": {
+        "sun_elevation_degrees": null,
+        "vray_sun_size_multiplier": null,
+        "key_direction": "Existing window/sky aperture; keep the broad luminous opening physically motivated.",
+        "shadow_softness": "Broad environment/window illumination. No automatic new fill cards.",
+        "lit_to_shade_diffuse_ratio": {
+          "start": 2.5,
+          "range": [
+            2,
+            3
+          ]
+        },
+        "practical_cct_kelvin": {
+          "start": 3200,
+          "range": [
+            3000,
+            3500
+          ]
+        },
+        "practical_scope": "Only existing fixtures selected to remain on, subordinate to window daylight.",
+        "intensity": "Balance existing sources without changing camera exposure or surface albedo."
+      },
+      "eligibility": "Existing openings and rig provide soft window illumination; suppressing or changing direct sun needs an explicit previewed lighting variant.",
+      "grade_pair": "Clean cream/white balance and gentle highlight rolloff; do not bleach wood grain.",
+      "reject_if": [
+        "room becomes evenly flat",
+        "window is replaced by a white card",
+        "curtains or glass materials are altered to increase transmission"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "Warm Raking Interior",
+      "category": "architectural",
+      "references": [
+        {
+          "ref": "RC",
+          "seconds": 90.233
+        },
+        {
+          "ref": "EN",
+          "seconds": 45.983
+        },
+        {
+          "ref": "CM",
+          "seconds": 14.05
+        }
+      ],
+      "purpose": "Warm shafts or patches through real openings that reveal floor, fabric and wall relief.",
+      "settings": {
+        "sun_elevation_degrees": {
+          "start": 12,
+          "range": [
+            8,
+            20
+          ]
+        },
+        "vray_sun_size_multiplier": {
+          "start": 1.5,
+          "range": [
+            1,
+            2
+          ]
+        },
+        "key_direction": "Through the existing aperture, grazing the intended existing surface; approve once in world coordinates.",
+        "lit_to_shade_diffuse_ratio": {
+          "start": 5,
+          "range": [
+            4,
+            6
+          ]
+        },
+        "practical_cct_kelvin": {
+          "start": 2900,
+          "range": [
+            2700,
+            3000
+          ]
+        },
+        "practical_scope": "Existing accent fixtures only; below the daylight key.",
+        "intensity": "Calibrate existing sun/sky and fixture groups; no universal lumens."
+      },
+      "eligibility": "The actual window geometry and orientation admit the desired light. No new windows, gobos or atmospheric volume.",
+      "grade_pair": "Local warmth on lit surfaces; retain neutral shaded stone and detailed highlights.",
+      "reject_if": [
+        "light appears to pass through opaque walls",
+        "sun patch slides because light tracks camera",
+        "materials are recoloured to simulate lighting"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "Warm Practical Luxury",
+      "category": "architectural",
+      "references": [
+        {
+          "ref": "RC",
+          "seconds": 65.25
+        },
+        {
+          "ref": "CM",
+          "seconds": 149
+        },
+        {
+          "ref": "PM",
+          "seconds": 158.117
+        }
+      ],
+      "purpose": "Warm, layered lobby, lounge, banquet or spa lighting from existing fixtures.",
+      "settings": {
+        "sun_elevation_degrees": null,
+        "vray_sun_size_multiplier": null,
+        "key_direction": "Existing chandelier, cove, wall-wash or decorative fixture locations.",
+        "shadow_softness": "Preserve physical emitter dimensions and existing photometric distribution.",
+        "lit_to_shade_diffuse_ratio": {
+          "start": 3,
+          "range": [
+            2,
+            4
+          ]
+        },
+        "practical_cct_kelvin": {
+          "start": 3000,
+          "range": [
+            2700,
+            3200
+          ]
+        },
+        "practical_scope": "Map cove, accent, decorative and general fixtures separately.",
+        "intensity": "Retain fixture units/IES; calibrate by visible contribution, not equal multipliers.",
+        "daylight": "Keep existing visible window environment coherent and subordinate where appropriate."
+      },
+      "eligibility": "Existing fixture network provides the required lighting; no automatic hidden lights or edits to emissive material parameters.",
+      "grade_pair": "Cream, gold and wood separation; warm pools rather than an overall orange cast.",
+      "reject_if": [
+        "light strips lose shape in clipping",
+        "all fixture types have identical brightness",
+        "dark wood loses texture"
+      ]
+    },
+    {
+      "id": "P07",
+      "name": "Blue Hour and Warm Practicals",
+      "category": "architectural",
+      "references": [
+        {
+          "ref": "CM",
+          "seconds": 127.283
+        },
+        {
+          "ref": "RC",
+          "seconds": 114.733
+        },
+        {
+          "ref": "EN",
+          "seconds": 167.117
+        },
+        {
+          "ref": "PM",
+          "seconds": 181.7
+        }
+      ],
+      "purpose": "Cool exterior ambience balanced with warm occupied interiors and landscape fixtures.",
+      "settings": {
+        "sun_elevation_degrees": {
+          "start": -4,
+          "range": [
+            -6,
+            -2
+          ]
+        },
+        "vray_sun_size_multiplier": null,
+        "sun_condition": "No above-horizon direct sun; verify below-horizon behaviour of the actual sky model.",
+        "environment": "Compatible existing twilight sky/HDRI. If missing, block and request a separate environment choice; do not fetch or substitute one.",
+        "lit_to_shade_diffuse_ratio": {
+          "start": 5,
+          "range": [
+            3,
+            8
+          ]
+        },
+        "practical_cct_kelvin": {
+          "start": 3000,
+          "range": [
+            2700,
+            3200
+          ]
+        },
+        "practical_scope": "Existing interior, facade and landscape fixtures; do not force pools, RGB sources or sports floodlights to this CCT.",
+        "intensity": "Balance actual practicals against environment; preserve coherent illumination and reflections."
+      },
+      "eligibility": "Twilight-capable existing rig and the required actual fixtures are present. Otherwise unavailable.",
+      "grade_pair": "Cool ambient/warm practical separation, readable facade shadows; keep blue tint off neutral interiors.",
+      "reject_if": [
+        "warm fixtures appear without corresponding lights",
+        "environment is black while reflections show daytime",
+        "weak LightMix passes become noisy"
+      ]
+    },
+    {
+      "id": "P08",
+      "name": "Low-Key Material Detail",
+      "category": "architectural",
+      "references": [
+        {
+          "ref": "CM",
+          "seconds": 37.75
+        },
+        {
+          "ref": "PT",
+          "seconds": 1.817
+        },
+        {
+          "ref": "PM",
+          "seconds": 95.25
+        }
+      ],
+      "purpose": "Controlled grazing or reflected highlights on existing metal, stone, glass and fabric details.",
+      "settings": {
+        "sun_elevation_degrees": null,
+        "vray_sun_size_multiplier": null,
+        "key_direction": "Use the existing window or fixture angle to reveal surface relief and edges in the unchanged shot.",
+        "shadow_softness": "Source shape should describe curvature without a broad clipped reflection.",
+        "lit_to_shade_diffuse_ratio": {
+          "start": 10,
+          "range": [
+            8,
+            16
+          ]
+        },
+        "practical_cct_kelvin": null,
+        "intensity": "Retain existing source colour; calibrate mapped key/ambient contributions and keep meaningful dark detail."
+      },
+      "eligibility": "The saved camera already contains a suitable detail view and existing sources can provide separation.",
+      "grade_pair": "Deeper contrast with protected texture, glints and original material hue; no automatic vignette.",
+      "reject_if": [
+        "roughness is changed to fake highlights",
+        "microtexture is denoised away",
+        "exposure is animated to follow highlights"
+      ]
+    },
+    {
+      "id": "P09",
+      "name": "Theatrical Studio Specialty",
+      "category": "specialty_not_architectural_default",
+      "references": [
+        {
+          "ref": "RC",
+          "seconds": 15.917
+        },
+        {
+          "ref": "RC",
+          "seconds": 36.183
+        }
+      ],
+      "purpose": "Isolated hero-object highlights and a dark surround, based on the separate Riviera Crown prologue.",
+      "settings": {
+        "sun_elevation_degrees": null,
+        "vray_sun_size_multiplier": null,
+        "key_direction": "Existing studio key and rim fixtures only, with approved source shaping.",
+        "lit_to_shade_diffuse_ratio": {
+          "start": 12,
+          "range": [
+            8,
+            16
+          ]
+        },
+        "practical_cct_kelvin": {
+          "start": 5000,
+          "range": [
+            4500,
+            5500
+          ]
+        },
+        "practical_scope": "Here the CCT field applies to supported existing studio area lights, not scene practical architecture fixtures.",
+        "intensity": "Calibrate existing studio key/rim/background groups. No automatic environment blackout."
+      },
+      "eligibility": "Unavailable unless the original scene already contains a suitable studio/set and hero object. Do not add chess pieces, backdrop, fog or architecture.",
+      "grade_pair": "Controlled near-black background with separated specular edges; preserve existing accent colours.",
+      "reject_if": [
+        "used as a default grade for an ordinary daylight building",
+        "new set geometry or sources are required",
+        "black crush erases the hero object's shape"
+      ]
+    }
+  ],
+  "technical_sources": [
+    "https://docs-chaos.atlassian.net/wiki/spaces/VMAX/pages/113578216",
+    "https://docs-chaos.atlassian.net/wiki/spaces/VMAX/pages/113588521/Layers",
+    "https://docs-chaos.atlassian.net/wiki/spaces/VMAX/pages/113586936/VRayLight",
+    "https://docs.chaos.com/pages/viewpage.action?pageId=64598504"
+  ]
+}

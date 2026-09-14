@@ -1,0 +1,12 @@
+{
+  "name": "max-runway-bridge",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=20.19"},
+  "scripts": {"test": "node --test tests/*.test.mjs"},
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "mcp-remote": "0.14.2"
+  }
+}
